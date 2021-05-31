@@ -207,6 +207,7 @@ func (hs *HTTPServer) getFrontendSettingsMap(c *models.ReqContext) (map[string]i
 		"alertingErrorOrTimeout":     setting.AlertingErrorOrTimeout,
 		"alertingNoDataOrNullValues": setting.AlertingNoDataOrNullValues,
 		"alertingMinInterval":        setting.AlertingMinInterval,
+		"liveEnabled":                hs.Cfg.LiveMaxConnections != 0,
 		"autoAssignOrg":              setting.AutoAssignOrg,
 		"verifyEmailEnabled":         setting.VerifyEmailEnabled,
 		"sigV4AuthEnabled":           setting.SigV4AuthEnabled,
@@ -287,7 +288,7 @@ func getPanelSort(id string) int {
 		sort = 9
 	case "heatmap":
 		sort = 10
-	case "status-grid":
+	case "status-history":
 		sort = 11
 	case "histogram":
 		sort = 12
